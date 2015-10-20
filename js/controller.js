@@ -32,7 +32,14 @@ var init = function() {
       action: AC.Action.SayHello, // see js/shared.js file
       message: 'Oh hellow screen!'
     });
+  });
 
+  // Send action to screen to move the cube
+  var move_cube_button = document.getElementById('move_cube');
+  move_cube_button.addEventListener('click', function() {
+    air_console.message(AirConsole.SCREEN, {
+      action: AC.Action.MoveCube
+    });
   });
 
 };

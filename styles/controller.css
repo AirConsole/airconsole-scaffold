@@ -11,8 +11,10 @@ body {
 }
 
 button {
+  width: 100%;
   border: 4px solid #1abc9c;
   background: #16a085;
   color: #FFFFFF;
   font-size: 32px;
+  margin: 0.2em 0;
 }
