@@ -20,12 +20,21 @@ var init = function() {
   air_console = new AirConsole();
 
   air_console.onReady = function() {
-    appendTextToElement(message_log_ele, "You are the Screen!");
+    appendTextToElement(message_log_ele, "OnReady - You are the Screen!");
+  };
+
+  // Gets called when a device connects
+  air_console.onConnect = function(device_id) {
+    appendTextToElement(message_log_ele, "Connected device id: " + device_id);
+  };
+
+  // Gets called when a device disconnects
+  air_console.onDisconnect = function(device_id) {
+    appendTextToElement(message_log_ele, "Disconnect device id: " + device_id);
   };
 
   // Receive a message from a device
   air_console.onMessage = function(device_id, data) {
-
     // Receive "greet" message
     if (data.action === AC.Action.SayHello) { // see js/shared.js
       appendTextToElement(message_log_ele, "Hello from device " + device_id);
@@ -36,7 +45,7 @@ var init = function() {
     // Receive "move cube" action
     if (data.action === AC.Action.MoveCube) {
       var px = moveCube();
-      var msg = "Device " + device_id + " moves the cube " + px + "px";
+      var msg = "Device " + device_id + " moves the cube to: " + px + "px";
       appendTextToElement(message_log_ele, msg);
     }
 
